@@ -53,13 +53,22 @@ app.get('/articles/new', (req, res) => {
 // CREATE
 app.post('/articles', (req, res) => {
   Article.create(req.body).then((article) => {
-    console.log(article);
-    res.redirect('/');
+    console.log(article)
+    res.redirect(`/articles/${article._id}`) // Redirect to articles/:id
+  }).catch((err) => {
+    console.log(err.message)
+  })
+})
+
+
+// SHOW
+app.get('/articles/:id', (req, res) => {
+  Article.findById(req.params.id).then((article) => {
+    res.render('articles-show', { article: article })
   }).catch((err) => {
     console.log(err.message);
   })
 })
-
 
 app.listen(3000, () => {
   console.log('App listening on port 3000!')

@@ -3,7 +3,7 @@
 <a href="/articles/new">New Article</a>
 
 {{#each articles}}
-  <h2>{{this.name}}</h2>
+<h2><a href="/articles/{{this._id}}">{{this.name}}</a></h2>
  <h3>
   <font size="3" color="red">{{this.bin}}</font>
 </h3>
