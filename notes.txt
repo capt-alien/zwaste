@@ -3,3 +3,9 @@ notes:
 review == article
 
 reviews == articles
+
+title == name
+movieTitle == description
+
+
+bin == name of bin article goes into
