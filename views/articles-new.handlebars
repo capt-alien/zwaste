@@ -1,0 +1,35 @@
+<form method="POST" action="/articles">
+  <fieldset>
+    <legend>New Article</legend>
+    <!-- TITLE -->
+    <p>
+      <label for="name">Name</label><br>
+      <input type="text" name="name" />
+    </p>
+
+    <p>
+      <label for="description-text">Description</label><br>
+      <textarea id="description-text" name="description" rows="10" /></textarea>
+    </p>
+
+    <p>
+      <label for="bin">Bin</label><br>
+      <input type="text" name="bin" />
+    </p>
+
+  </fieldset>
+
+  <!-- BUTTON -->
+  <p>
+    <button type="submit">Save Article</button>
+  </p>
+
+</form>
+
+<!--
+
+const Article = mongoose.model('Article', {
+  name: String,
+  description: String,
+  bin: String
+}); -->
