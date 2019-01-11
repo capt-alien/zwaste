@@ -1,75 +1,24 @@
 const express = require('express')
+const methodOverride = require('method-override')
 const app = express()
-
-
 const mongoose = require('mongoose');
+const articles = require('./controllers/articles')(app);
 mongoose.connect('mongodb://localhost/zwaste');
-
-// INITIALIZE BODY-PARSER AND ADD IT TO APP
 const bodyParser = require('body-parser');
-
-const Article = mongoose.model('Article', {
-  name: String,
-  description: String,
-  bin: String
-});
-
 var exphbs = require('express-handlebars');
-
-// OUR MOCK ARRAY OF PROJECTS
-// let articles = [
-//   { name: "batman forever", description: "This is clearly trash", bin:"trash" },
-//   { name: "ATitanic", description: "This is deffinetly recycleing" , bin:"compost" }
-// ]
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-// Routeing
-// INDEX Page for later devlopment
-// app.get('/articles', (req, res) => {
-//   res.render('articles-index', { articles: articles });
-// })
-
-// INDEX
-app.get('/', (req, res) => {
-  Article.find()
-    .then(articles => {
-      res.render('articles-index', { articles: articles });
-    })
-    .catch(err => {
-      console.log(err);
-    })
-})
-
-// NEW
-app.get('/articles/new', (req, res) => {
-  res.render('articles-new', {});
-})
+// override with POST having ?_method=DELETE or ?_method=PUT
+app.use(methodOverride('_method'))
 
 
-// CREATE
-app.post('/articles', (req, res) => {
-  Article.create(req.body).then((article) => {
-    console.log(article)
-    res.redirect(`/articles/${article._id}`) // Redirect to articles/:id
-  }).catch((err) => {
-    console.log(err.message)
-  })
-})
-
-
-// SHOW
-app.get('/articles/:id', (req, res) => {
-  Article.findById(req.params.id).then((article) => {
-    res.render('articles-show', { article: article })
-  }).catch((err) => {
-    console.log(err.message);
-  })
-})
 
 app.listen(3000, () => {
   console.log('App listening on port 3000!')
 })
+
+module.exports = app;

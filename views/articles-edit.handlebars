@@ -1,0 +1,15 @@
+<!-- views/articles-edit.handlebars -->
+
+<form method="POST" action="/articles/{{article._id}}?_method=PUT">
+  {{> articles-form}}
+
+
+  <!-- Save BUTTON -->
+  <p>
+    <button type="submit">Save Article</button>
+    <button href="/articles/{article._id}" >Cancel</button>
+  </p>
+
+
+  </p>
+</form>

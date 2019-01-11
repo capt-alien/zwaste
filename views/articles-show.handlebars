@@ -4,3 +4,10 @@
 <h1>{{article.name}}</h1>
 <h2>{{article.bin}}</h2>
 <p>{{article.description}}</p>
+
+<p><a href="/articles/{{article._id}}/edit">Edit</a></p>
+
+<!-- Delete button -->
+<p><form method="POST" action="/articles/{{article._id}}?_method=DELETE">
+    <button type="submit">Delete</button>
+</form></p>
