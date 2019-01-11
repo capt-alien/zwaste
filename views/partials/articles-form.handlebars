@@ -3,20 +3,24 @@
 <fieldset>
   <legend>New Article</legend>
   <!-- TITLE -->
-  <p>
-    <label for="name">Name</label><br>
-    <input type="text" name="name" />
-  </p>
+  <!-- TITLE -->
+  <div class="form-group">
+    <label for="article-title">Title</label><br>
+    <input class="form-control" id="article-title" type="text" name="title" value="{{article.title}}"/>
+  </div>
   <!-- bin -->
-  <p>
+  <!-- MOVIE TITLE -->
+  <div class="form-group">
     <label for="bin">Bin</label><br>
-    <input type="text" name="bin" />
-  </p>
-  <!-- description -->
-  <p>
-    <label for="description-text">Description</label><br>
-    <textarea id="description-text" name="description" rows="10" /></textarea>
-  </p>
+    <input class="form-control" id="bin" type="text" name="bin" value="{{articles.bin}}" />
+  </div>
+
+  <!-- DESCRIPTION -->
+   <div class="form-group">
+     <label for="article-description">Description</label><br>
+     <textarea class="form-control" id="article-description" name="description" rows="10" />{{article.description}}</textarea>
+   </div>
+ </fieldset>
 
 
 </fieldset>

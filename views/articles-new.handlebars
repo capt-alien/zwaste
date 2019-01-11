@@ -1,17 +1,13 @@
-<form method="POST" action="/articles">
-  {{> articles-form}}
+<!-- views/articles-new.handlebars -->
 
-  <!-- BUTTON -->
-  <p>
-    <button type="submit">Save Article</button>
-  </p>
-
-</form>
-
-<!--
-
-const Article = mongoose.model('Article', {
-  name: String,
-  description: String,
-  bin: String
-}); -->
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <form method="POST" action="/articles">
+      {{> articles-form}}
+      <!-- BUTTON -->
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Save Article</button>
+      </div>
+    </form>
+  </div>
+</div>
